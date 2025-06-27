@@ -1,22 +1,50 @@
-import { motion } from 'motion/react';
+import { useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import Header from './components/Header';
+import Home from './components/Home';
+import Base from './components/Base';
+import Toppings from './components/Toppings';
+import Order from './components/Order';
+
+// Define the pizza type
+interface Pizza {
+  base: string;
+  toppings: string[];
+}
 
 function App() {
+  const [pizza, setPizza] = useState<Pizza>({ base: '', toppings: [] });
+
+  const addBase = (base: string) => {
+    setPizza({ ...pizza, base });
+  };
+
+  const addTopping = (topping: string) => {
+    let newToppings: string[];
+    if (!pizza.toppings.includes(topping)) {
+      newToppings = [...pizza.toppings, topping];
+    } else {
+      newToppings = pizza.toppings.filter((item) => item !== topping);
+    }
+    setPizza({ ...pizza, toppings: newToppings });
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <motion.h1
-        className="text-4xl font-bold capitalize text-white"
-        initial={{ x: '-100vw' }}
-        animate={{ x: 0 }}
-        transition={{
-          duration: 2,
-          delay: 1,
-          ease: 'backInOut',
-        }}
-      >
-        
-        Learning FM
-      </motion.h1>
-    </div>
+    <>
+      <Header />
+      <Routes>
+        <Route
+          path="/base"
+          element={<Base addBase={addBase} pizza={pizza} />}
+        />
+        <Route
+          path="/toppings"
+          element={<Toppings addTopping={addTopping} pizza={pizza} />}
+        />
+        <Route path="/order" element={<Order pizza={pizza} />} />
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </>
   );
 }
 
