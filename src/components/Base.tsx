@@ -37,6 +37,19 @@ const nextVariants = {
   },
 };
 
+const buttonVariants = {
+  hover: {
+    scale: 1.1,
+    textShadow: '0px 0px 8px rgb(255,255,255)',
+    boxShadow: '0px 0px 8px rgb(255,255,255)',
+    transition: {
+      duration: 0.3,
+      repeat: Infinity,
+      repeatType: 'reverse' as const,
+    },
+  },
+};
+
 const Base = ({ addBase, pizza }: BaseProps) => {
   const bases = ['Classic', 'Thin & Crispy', 'Thick Crust'];
 
@@ -72,13 +85,7 @@ const Base = ({ addBase, pizza }: BaseProps) => {
           // If the keys are the same, we don't need to specify them again in the child.
         >
           <Link to="/toppings">
-            <motion.button
-              whileHover={{
-                scale: 1.1,
-                textShadow: '0px 0px 8px rgb(255,255,255)',
-                boxShadow: '0px 0px 8px rgb(255,255,255)',
-              }}
-            >
+            <motion.button variants={buttonVariants} whileHover="hover">
               Next
             </motion.button>
           </Link>
