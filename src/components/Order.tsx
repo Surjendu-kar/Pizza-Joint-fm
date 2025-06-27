@@ -32,6 +32,13 @@ const conatinerVariants = {
     // before any child animations start. This is useful for sequencing
     // animations so that the parent animates first, then the children.
   },
+  exit: {
+    x: '100vw',
+    transition: {
+      ease: 'easeInOut' as const,
+      // duration: 0.4,
+    },
+  },
 };
 
 const childVariants = {
@@ -50,6 +57,7 @@ function Order({ pizza }: OrderProps) {
       variants={conatinerVariants}
       initial="hidden"
       animate="visible"
+      exit="exit"
     >
       <h2 className="text-2xl">Thank you for your order :)</h2>
       <motion.p variants={childVariants}>
