@@ -7,7 +7,7 @@ const Home = () => {
       className="home container"
       initial={{ opacity: 0.2 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 3 }}
+      transition={{ duration: 2, delay: 1 }}
     >
       <motion.h2
         initial={{ x: '-100vw' }}
@@ -31,7 +31,6 @@ const Home = () => {
             },
           }}
           whileHover={{
-            scale: 1.1,
             textShadow: '0px 0px 8px rgb(255,255,255)',
             boxShadow: '0px 0px 8px rgb(255,255,255)',
           }}

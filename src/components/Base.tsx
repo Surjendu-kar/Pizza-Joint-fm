@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { motion } from 'motion/react';
 
 type BaseProps = {
   addBase: (base: string) => void;
@@ -23,11 +24,16 @@ const Base = ({ addBase, pizza }: BaseProps) => {
       </ul>
 
       {pizza.base && (
-        <div className="next">
+        <motion.div
+          className="next"
+          initial={{ x: '-100vw' }}
+          animate={{ x: 0 }}
+          transition={{ duration: 1 }}
+        >
           <Link to="/toppings">
             <button>Next</button>
           </Link>
-        </div>
+        </motion.div>
       )}
     </div>
   );
