@@ -8,7 +8,7 @@ type ToppingsProps = {
 
 const conatinerVariants = {
   hidden: {
-    x: '100vw',
+    x: '-100vw',
     opacity: 0,
   },
   visible: {
@@ -17,6 +17,13 @@ const conatinerVariants = {
     transition: {
       type: 'spring' as const,
       delay: 0.5,
+    },
+  },
+  exit: {
+    x: '100vw',
+    transition: {
+      ease: 'easeInOut' as const,
+      // duration: 0.4,
     },
   },
 };
@@ -48,6 +55,7 @@ function Toppings({ addTopping, pizza }: ToppingsProps) {
       variants={conatinerVariants}
       initial="hidden"
       animate="visible"
+      exit="exit"
       className="toppings container"
     >
       <h3>Step 2: Choose Toppings</h3>

@@ -9,7 +9,7 @@ type BaseProps = {
 // 'hidden' represents the initial properties, and 'visible' represents the animate properties
 const conatinerVariants = {
   hidden: {
-    x: '100vw',
+    x: '-100vw',
     opacity: 0,
   },
   visible: {
@@ -18,6 +18,13 @@ const conatinerVariants = {
     transition: {
       type: 'spring' as const,
       delay: 0.5,
+    },
+  },
+  exit: {
+    x: '100vw',
+    transition: {
+      ease: 'easeInOut' as const,
+      // duration: 0.4,
     },
   },
 };
@@ -59,6 +66,7 @@ const Base = ({ addBase, pizza }: BaseProps) => {
       variants={conatinerVariants}
       initial="hidden"
       animate="visible"
+      exit="exit"
     >
       <h3>Step 1: Choose Your Base</h3>
       <ul>

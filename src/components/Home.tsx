@@ -4,6 +4,13 @@ import { motion } from 'motion/react';
 const containerVariants = {
   hidden: { opacity: 0.2 },
   visible: { opacity: 1, transition: { duration: 2, delay: 1.5 } },
+  exit: {
+    x: '100vw',
+    transition: {
+      ease: 'easeInOut' as const,
+      // duration: 0.4,
+    },
+  },
 };
 
 const buttonVariants = {
@@ -25,6 +32,7 @@ const Home = () => {
       className="home container"
       initial="hidden"
       animate="visible"
+      exit="exit"
       variants={containerVariants}
     >
       <motion.h2
