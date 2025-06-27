@@ -6,6 +6,21 @@ type ToppingsProps = {
   pizza: { base: string; toppings: string[] };
 };
 
+const conatinerVariants = {
+  hidden: {
+    x: '100vw',
+    opacity: 0,
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring' as const,
+      delay: 0.5,
+    },
+  },
+};
+
 function Toppings({ addTopping, pizza }: ToppingsProps) {
   let toppings = [
     'mushrooms',
@@ -16,7 +31,12 @@ function Toppings({ addTopping, pizza }: ToppingsProps) {
     'tomatoes',
   ];
   return (
-    <div className="toppings container">
+    <motion.div
+      variants={conatinerVariants}
+      initial="hidden"
+      animate="visible"
+      className="toppings container"
+    >
       <h3>Step 2: Choose Toppings</h3>
       <ul>
         {toppings.map((topping) => {
@@ -45,7 +65,7 @@ function Toppings({ addTopping, pizza }: ToppingsProps) {
           Order
         </motion.button>
       </Link>
-    </div>
+    </motion.div>
   );
 }
 
