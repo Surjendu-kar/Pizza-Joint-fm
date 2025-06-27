@@ -6,15 +6,46 @@ type BaseProps = {
   pizza: { base: string; toppings: string[] };
 };
 
+// 'hidden' represents the initial properties, and 'visible' represents the animate properties
+const conatinerVariants = {
+  hidden: {
+    x: '100vw',
+    opacity: 0,
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring' as const,
+      delay: 0.5,
+    },
+  },
+};
+
+const nextVariants = {
+  hidden: {
+    x: '-100vw',
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      type: 'spring' as const,
+      stiffness: 120,
+    },
+  },
+};
+
 const Base = ({ addBase, pizza }: BaseProps) => {
   const bases = ['Classic', 'Thin & Crispy', 'Thick Crust'];
 
   return (
     <motion.div
       className="base container"
-      initial={{ x: '100vw' }}
-      animate={{ x: 0 }}
-      transition={{ type: 'spring', delay: 0.5 }}
+      variants={conatinerVariants}
+      initial="hidden"
+      animate="visible"
     >
       <h3>Step 1: Choose Your Base</h3>
       <ul>
@@ -36,9 +67,9 @@ const Base = ({ addBase, pizza }: BaseProps) => {
       {pizza.base && (
         <motion.div
           className="next"
-          initial={{ x: '-100vw' }}
-          animate={{ x: 0 }}
-          transition={{ type: 'spring', stiffness: 120 }}
+          variants={nextVariants}
+          // The 'initial' and 'animate' props are inherited from the parent motion.div.
+          // If the keys are the same, we don't need to specify them again in the child.
         >
           <Link to="/toppings">
             <motion.button
