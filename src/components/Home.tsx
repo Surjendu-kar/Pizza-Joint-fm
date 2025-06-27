@@ -5,7 +5,7 @@ const containerVariants = {
   hidden: { opacity: 0.2 },
   visible: { opacity: 1, transition: { duration: 2, delay: 1.5 } },
   exit: {
-    x: '100vw',
+    x: '-100vw',
     transition: {
       ease: 'easeInOut' as const,
       // duration: 0.4,
@@ -36,7 +36,7 @@ const Home = () => {
       variants={containerVariants}
     >
       <motion.h2
-        initial={{ x: '-100vw' }}
+        initial={{ x: '100vw' }}
         animate={{
           fontSize: '70px',
           x: 0,

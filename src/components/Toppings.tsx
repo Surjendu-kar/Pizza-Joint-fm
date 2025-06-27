@@ -8,7 +8,7 @@ type ToppingsProps = {
 
 const conatinerVariants = {
   hidden: {
-    x: '-100vw',
+    x: '100vw',
     opacity: 0,
   },
   visible: {
@@ -20,7 +20,7 @@ const conatinerVariants = {
     },
   },
   exit: {
-    x: '100vw',
+    x: '-100vw',
     transition: {
       ease: 'easeInOut' as const,
       // duration: 0.4,

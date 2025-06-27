@@ -5,7 +5,7 @@ type OrderProps = {
 };
 const conatinerVariants = {
   hidden: {
-    x: '100vw',
+    x: '-100vw',
     opacity: 0,
   },
   visible: {
