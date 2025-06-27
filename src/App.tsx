@@ -6,6 +6,7 @@ import Base from './components/Base';
 import Toppings from './components/Toppings';
 import Order from './components/Order';
 import { AnimatePresence } from 'motion/react';
+import Modal from './components/Modal';
 
 // Define the pizza type
 interface Pizza {
@@ -16,6 +17,7 @@ interface Pizza {
 function App() {
   const [pizza, setPizza] = useState<Pizza>({ base: '', toppings: [] });
   const location = useLocation();
+  const [showModal, setShowModal] = useState(false);
 
   const addBase = (base: string) => {
     setPizza({ ...pizza, base });
@@ -34,6 +36,7 @@ function App() {
   return (
     <>
       <Header />
+      <Modal showModal={showModal} />
       {/*  When we change routes, we want the old page/component to stay visible
       for a short time so it can play its exit animation (like fading out or
       sliding away).
@@ -42,7 +45,7 @@ function App() {
       Both the old and new components
       are in the DOM for a brief moment—the old one is animating out, and the
       new one is animating in. */}
-      <AnimatePresence mode='wait'>
+      <AnimatePresence mode="wait" onExitComplete={() => setShowModal(false)}>
         <Routes location={location} key={location.key}>
           <Route
             path="/base"
@@ -52,7 +55,10 @@ function App() {
             path="/toppings"
             element={<Toppings addTopping={addTopping} pizza={pizza} />}
           />
-          <Route path="/order" element={<Order pizza={pizza} />} />
+          <Route
+            path="/order"
+            element={<Order pizza={pizza} setShowModal={setShowModal} />}
+          />
           <Route path="/" element={<Home />} />
         </Routes>
       </AnimatePresence>

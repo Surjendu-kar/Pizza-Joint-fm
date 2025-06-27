@@ -1,7 +1,9 @@
 import { motion } from 'motion/react';
+import { useEffect } from 'react';
 
 type OrderProps = {
   pizza: { base: string; toppings: string[] };
+  setShowModal: (base: boolean) => void;
 };
 const conatinerVariants = {
   hidden: {
@@ -50,7 +52,13 @@ const childVariants = {
   },
 };
 
-function Order({ pizza }: OrderProps) {
+function Order({ pizza, setShowModal }: OrderProps) {
+  useEffect(() => {
+    setTimeout(() => {
+      setShowModal(true);
+    }, 1000);
+  }, [setShowModal]);
+
   return (
     <motion.div
       className="container order"
