@@ -13,8 +13,20 @@ const conatinerVariants = {
     opacity: 1,
     transition: {
       type: 'spring' as const,
-      delay: 0.5,
+      // 'mass' controls how heavy the spring feels.
+      // A higher mass makes the animation slower and more forceful,
+      // while a lower mass makes it quicker and lighter.
+      mass: 0.4,
+
+      // 'damping' controls how quickly the spring comes to rest.
+      // A higher damping value means less bounce and a quicker stop,
+      // while a lower value means more bounce and a longer time to settle.
+      damping: 8,
       when: 'beforeChildren',
+      // 'staggerChildren' controls the delay between the start of each child's animation.
+      // A higher value means each child will start animating further apart in time,
+      // creating a staggered, cascading effect for child animations.
+      staggerChildren: 0.4,
     },
     // 'when: "beforeChildren"' ensures the parent animation completes
     // before any child animations start. This is useful for sequencing
