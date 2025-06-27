@@ -3,7 +3,12 @@ import { motion } from 'motion/react';
 
 const Home = () => {
   return (
-    <div className="home container">
+    <motion.div
+      className="home container"
+      initial={{ opacity: 0.2 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 3 }}
+    >
       <motion.h2
         initial={{ x: '-100vw' }}
         animate={{
@@ -11,8 +16,9 @@ const Home = () => {
           x: 0,
         }}
         transition={{
-          duration: 4,
+          duration: 2,
         }}
+        className="font-bold"
       >
         Welcome to Pizza Joint
       </motion.h2>
@@ -29,12 +35,11 @@ const Home = () => {
             textShadow: '0px 0px 8px rgb(255,255,255)',
             boxShadow: '0px 0px 8px rgb(255,255,255)',
           }}
-         
         >
           Create Your Pizza
         </motion.button>
       </Link>
-    </div>
+    </motion.div>
   );
 };
 
