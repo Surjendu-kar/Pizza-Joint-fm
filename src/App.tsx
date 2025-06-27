@@ -42,7 +42,7 @@ function App() {
       Both the old and new components
       are in the DOM for a brief moment—the old one is animating out, and the
       new one is animating in. */}
-      <AnimatePresence>
+      <AnimatePresence mode='wait'>
         <Routes location={location} key={location.key}>
           <Route
             path="/base"
