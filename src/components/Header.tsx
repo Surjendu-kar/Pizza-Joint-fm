@@ -56,9 +56,26 @@ const Header = () => {
         className="title"
         initial={{ y: -200 }}
         animate={{ y: -10 }}
-        transition={{ delay: 0.5, type: 'spring', stiffness: 120 }}
+        transition={{
+          delay: 0.5,
+          type: 'spring',
+          stiffness: 120,
+        }}
       >
         <h1>Pizza Joint</h1>
+        <motion.div
+          initial={{
+            width: 0,
+          }}
+          animate={{
+            width: '100%',
+          }}
+          transition={{
+            delay: 1,
+            duration: 4,
+          }}
+          className="border-[2px] border-white/20 rounded-lg"
+        />
       </motion.div>
     </header>
   );
