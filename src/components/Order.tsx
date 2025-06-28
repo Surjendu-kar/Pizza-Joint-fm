@@ -56,7 +56,7 @@ function Order({ pizza, setShowModal }: OrderProps) {
   useEffect(() => {
     setTimeout(() => {
       setShowModal(true);
-    }, 1000);
+    }, 5000);
   }, [setShowModal]);
 
   return (

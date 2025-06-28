@@ -36,10 +36,9 @@ const Home = () => {
       variants={containerVariants}
     >
       <motion.h2
-        initial={{ x: '100vw' }}
+        initial={{ fontSize: '60px' }}
         animate={{
           fontSize: '70px',
-          x: 0,
         }}
         transition={{
           duration: 2,
