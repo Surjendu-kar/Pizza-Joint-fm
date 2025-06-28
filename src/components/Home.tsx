@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
+// import Loader from './Loader';
 
 const containerVariants = {
   hidden: { opacity: 0.2 },
@@ -51,6 +52,7 @@ const Home = () => {
           Create Your Pizza
         </motion.button>
       </Link>
+      {/* <Loader/> */}
     </motion.div>
   );
 };
